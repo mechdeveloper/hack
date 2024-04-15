@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+  labels:
+    app: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: api-container
+        image: abacr8786765.azurecr.io/ab-content-api:v1
+        ports:
+        - containerPort: 3001
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "128Mi"
